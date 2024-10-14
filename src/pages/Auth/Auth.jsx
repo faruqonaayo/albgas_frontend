@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 // importing custom components
 import Container from "../../components/Container/Container";
@@ -16,6 +17,7 @@ export default function Auth() {
   const [formType, setFormType] = useState("login");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [dob, setDob] = useState("");
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
   const [addressProvince, setAddressProvince] = useState("");
@@ -26,10 +28,6 @@ export default function Auth() {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
-  function handleAuthFormSubmition(event) {
-    event.preventDefault();
-  }
-
   function handleFormTypeChange() {
     setFormType((c) => {
       if (c === "login") {
@@ -37,6 +35,81 @@ export default function Auth() {
       }
       return "login";
     });
+  }
+
+  async function handleAuthFormSubmition(event) {
+    event.preventDefault();
+    try {
+      if (
+        formType === "register" &&
+        firstName.length >= 2 &&
+        lastName.length >= 2 &&
+        address.length >= 2 &&
+        occupation.length >= 2 &&
+        password.length >= 7 &&
+        cPassword === password &&
+        gender &&
+        addressProvince
+      ) {
+        const response = await axios.put(
+          "http://localhost:3000/auth/register",
+          {
+            firstName,
+            lastName,
+            dob,
+            gender,
+            addressProvince,
+            address,
+            occupation,
+            email,
+            password,
+            cPassword,
+          }
+        );
+
+        // reset form fields and set success message
+        setSuccessMessage(response.data.message);
+        setErrorMessage("");
+        setFirstName("");
+        setLastName("");
+        setDob("");
+        setEmail("");
+        setGender("");
+        setAddressProvince("");
+        setAddress("");
+        setOccupation("");
+        setPassword("");
+        setCPassword("");
+        setFormType("login");
+      } else if (formType === "login") {
+        const response = await axios.post("http://localhost:3000/auth/login", {
+          email,
+          password,
+        });
+
+        // reset form fields and set token in local storage and success message
+        localStorage.setItem("albGasToken", response.data.token);
+        setSuccessMessage(response.data.message);
+        setErrorMessage("");
+        setFirstName("");
+        setLastName("");
+        setDob("");
+        setEmail("");
+        setGender("");
+        setAddressProvince("");
+        setAddress("");
+        setOccupation("");
+        setPassword("");
+        setCPassword("");
+        setFormType("login");
+      } else {
+        setErrorMessage("Please fill all fields correctly");
+      }
+    } catch (error) {
+      // set error message if there is an error
+      setErrorMessage(error.response.data.message);
+      setSuccessMessage("");
+    }
   }
   return (
     <div className="Auth">
@@ -81,6 +154,16 @@ export default function Auth() {
                   inputPlaceholder={"Enter your last name"}
                   inputValue={lastName}
                   onChangeFunction={setLastName}
+                />
+              </Container>
+              <Container className={"label-input-container"}>
+                <Label labelFor={"dob"} labelText={"Date of Birth: "} />
+                <Input
+                  inputType={"date"}
+                  inputName={"dob"}
+                  inputPlaceholder={"Enter your date of birth"}
+                  inputValue={dob}
+                  onChangeFunction={setDob}
                 />
               </Container>
               <Container className={"label-input-container"}>
