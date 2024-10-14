@@ -5,6 +5,7 @@ export default function Input({
   inputName,
   inputPlaceholder,
   inputValue,
+  className,
   onChangeFunction,
 }) {
   function handleInputChange(event) {
@@ -16,6 +17,7 @@ export default function Input({
       name={inputName}
       placeholder={inputPlaceholder}
       value={inputValue}
+      className={className}
       onChange={handleInputChange}
     />
   );
@@ -26,5 +28,6 @@ Input.propTypes = {
   inputName: PropTypes.string,
   inputPlaceholder: PropTypes.string,
   inputValue: PropTypes.string,
+  className: PropTypes.string,
   onChangeFunction: PropTypes.func,
 };

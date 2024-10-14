@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import PropTypes from "prop-types";
 
 // importing custom components
 import Container from "../../components/Container/Container";
@@ -13,7 +14,7 @@ import Option from "../../components/Option/Option";
 // importing styles
 import "./Auth.css";
 
-export default function Auth() {
+export default function Auth({ onAuthenticate }) {
   const [formType, setFormType] = useState("login");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -102,6 +103,9 @@ export default function Auth() {
         setPassword("");
         setCPassword("");
         setFormType("login");
+
+        // call onAuthenticate function to change the state of the app
+        onAuthenticate(true);
       } else {
         setErrorMessage("Please fill all fields correctly");
       }
@@ -268,3 +272,7 @@ export default function Auth() {
     </div>
   );
 }
+
+Auth.propTypes = {
+  onAuthenticate: PropTypes.func,
+};

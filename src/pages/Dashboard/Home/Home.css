@@ -1,0 +1,85 @@
+ .home {
+  padding: 2px 20px;
+}
+
+ .home .search-container .search-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+ .home .search-container .search-form input {
+  background-color: #f5f7f8;
+  border: 1px solid #45474b;
+  padding: 4px 8px;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  width: 60%;
+  margin-bottom: 8px;
+}
+
+ .home .search-container .search-form input:focus {
+  outline: 1px solid #f4ce14;
+}
+
+ .home .search-container .search-form .search-button {
+  width: 150px;
+  background-color: #495e57;
+  border: 1px solid #45474b;
+  padding: 4px 8px;
+  font-size: 1.1rem;
+  font-weight: 550;
+  color: #f5f7f8;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+
+  .home
+  .search-container
+  .search-form
+  .search-button:hover {
+  background-color: #f4ce14;
+  color: #495e57;
+}
+
+ .home .content-title {
+  font-size: 1.7rem;
+  color: #45474b;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 0px;
+  text-decoration: underline;
+}
+
+ .home .production {
+  width: 100%;
+  height: 150px;
+  background-color: #ffffff;
+  margin-bottom: 30px;
+  box-shadow: 1px 3px 10px 0px #d8d8d8;
+  padding: 2px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  cursor: pointer;
+}
+
+ .home .production h2 {
+  font-size: 1.4rem;
+  color: #45474b;
+  margin: 0px;
+  padding: 0px;
+}
+
+.Dashboard .home .production p {
+  font-size: 0.9rem;
+  color: #45474b;
+  font-weight: 400;
+  margin: 0px;
+  padding: 0px;
+}
