@@ -60,9 +60,7 @@ export default function Dashboard({ onAuthenticate, serverUrl }) {
       {dashboardPage === "home" && (
         <Home onAuthenticate={onAuthenticate} serverUrl={serverUrl} />
       )}
-      {dashboardPage === "comparison" && <Container>Comparison</Container>}
       {dashboardPage === "profile" && <Container>Profile</Container>}
-
       <Container className={"dashboard-footer"}>
         <label>Developed by Faruq Ayomide</label>
       </Container>
