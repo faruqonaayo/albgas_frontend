@@ -15,12 +15,11 @@ export default function Dashboard({ onAuthenticate, serverUrl }) {
   function renderHomePage() {
     setDashboardPage("home");
   }
-  function renderComparisonPage() {
-    setDashboardPage("comparison");
-  }
+
   function renderProfilePage() {
     setDashboardPage("profile");
   }
+
   function logOut() {
     localStorage.removeItem("albGasToken");
     onAuthenticate(false);
@@ -38,11 +37,6 @@ export default function Dashboard({ onAuthenticate, serverUrl }) {
             className="nav-button"
             buttonText={"Home"}
             onClickFunction={renderHomePage}
-          />
-          <Button
-            className="nav-button"
-            buttonText={"Comparison"}
-            onClickFunction={renderComparisonPage}
           />
           <Button
             className="nav-button"
