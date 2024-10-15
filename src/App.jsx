@@ -5,6 +5,11 @@ import axios from "axios";
 import Auth from "./pages/Auth/Auth";
 import Dashboard from "./pages/Dashboard/Dashboard";
 
+// url
+let url;
+// url = "http://localhost:3000";
+url = "https://albgas-backend.onrender.com";
+
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -12,14 +17,11 @@ export default function App() {
     async function getProductionDetails() {
       try {
         // fetch data from the server
-        const response = await axios.get(
-          `http://localhost:3000/admin/auth`,
-          {
-            headers: {
-              Authorization: `Bearer:${localStorage.getItem("albGasToken")}`,
-            },
-          }
-        );
+        const response = await axios.get(`${url}/admin/auth`, {
+          headers: {
+            Authorization: `Bearer:${localStorage.getItem("albGasToken")}`,
+          },
+        });
         if (response.data.statusCode === 200) {
           setIsAuthenticated(true);
         }
@@ -33,9 +35,9 @@ export default function App() {
   return (
     <div className="App">
       {isAuthenticated ? (
-        <Dashboard onAuthenticate={setIsAuthenticated} />
+        <Dashboard onAuthenticate={setIsAuthenticated} serverUrl={url} />
       ) : (
-        <Auth onAuthenticate={setIsAuthenticated} />
+        <Auth onAuthenticate={setIsAuthenticated} serverUrl={url} />
       )}
     </div>
   );

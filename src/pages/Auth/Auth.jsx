@@ -14,7 +14,7 @@ import Option from "../../components/Option/Option";
 // importing styles
 import "./Auth.css";
 
-export default function Auth({ onAuthenticate }) {
+export default function Auth({ onAuthenticate, serverUrl }) {
   const [formType, setFormType] = useState("login");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -53,7 +53,7 @@ export default function Auth({ onAuthenticate }) {
         addressProvince
       ) {
         const response = await axios.put(
-          "http://localhost:3000/auth/register",
+          `${serverUrl}/auth/register`,
           {
             firstName,
             lastName,
@@ -83,7 +83,7 @@ export default function Auth({ onAuthenticate }) {
         setCPassword("");
         setFormType("login");
       } else if (formType === "login") {
-        const response = await axios.post("http://localhost:3000/auth/login", {
+        const response = await axios.post(`${serverUrl}/auth/login`, {
           email,
           password,
         });
@@ -275,4 +275,5 @@ export default function Auth({ onAuthenticate }) {
 
 Auth.propTypes = {
   onAuthenticate: PropTypes.func,
+  serverUrl: PropTypes.string,
 };

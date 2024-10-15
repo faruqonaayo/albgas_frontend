@@ -11,7 +11,7 @@ import Form from "../../../components/Form/Form";
 import "./Home.css";
 import axios from "axios";
 
-export default function Home({ onAuthenticate }) {
+export default function Home({ onAuthenticate, serverUrl }) {
   const [location, setLocation] = useState("Drumheller");
   const [year, setYear] = useState("2023");
   const [production, setProduction] = useState("");
@@ -25,7 +25,7 @@ export default function Home({ onAuthenticate }) {
       try {
         // fetch data from the server
         const response = await axios.get(
-          `http://localhost:3000/admin/production?location=${location}&year=${year}`,
+          `${serverUrl}/admin/production?location=${location}&year=${year}`,
           {
             headers: {
               Authorization: `Bearer:${localStorage.getItem("albGasToken")}`,
@@ -57,7 +57,7 @@ export default function Home({ onAuthenticate }) {
       // fetch data from the server
       if (searchLocation && searchYear) {
         const response = await axios.get(
-          `http://localhost:3000/admin/production?location=${searchLocation}&year=${searchYear}`,
+          `${serverUrl}/admin/production?location=${searchLocation}&year=${searchYear}`,
           {
             headers: {
               Authorization: `Bearer:${localStorage.getItem("albGasToken")}`,
@@ -128,4 +128,5 @@ export default function Home({ onAuthenticate }) {
 
 Home.propTypes = {
   onAuthenticate: PropTypes.func,
+  serverUrl: PropTypes.string,
 };

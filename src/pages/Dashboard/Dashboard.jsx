@@ -9,7 +9,7 @@ import Home from "./Home/Home";
 // importing styles
 import "./Dashboard.css";
 
-export default function Dashboard({ onAuthenticate }) {
+export default function Dashboard({ onAuthenticate, serverUrl }) {
   const [dashboardPage, setDashboardPage] = useState("home");
 
   function renderHomePage() {
@@ -21,7 +21,10 @@ export default function Dashboard({ onAuthenticate }) {
   function renderProfilePage() {
     setDashboardPage("profile");
   }
-  function logOut() {}
+  function logOut() {
+    localStorage.removeItem("albGasToken");
+    onAuthenticate(false);
+  }
 
   return (
     <div className="Dashboard">
@@ -54,7 +57,9 @@ export default function Dashboard({ onAuthenticate }) {
         </Container>
       </Container>
 
-      {dashboardPage === "home" && <Home onAuthenticate={onAuthenticate} />}
+      {dashboardPage === "home" && (
+        <Home onAuthenticate={onAuthenticate} serverUrl={serverUrl} />
+      )}
       {dashboardPage === "comparison" && <Container>Comparison</Container>}
       {dashboardPage === "profile" && <Container>Profile</Container>}
 
@@ -67,4 +72,5 @@ export default function Dashboard({ onAuthenticate }) {
 
 Dashboard.propTypes = {
   onAuthenticate: PropTypes.func,
+  serverUrl: PropTypes.string,
 };
