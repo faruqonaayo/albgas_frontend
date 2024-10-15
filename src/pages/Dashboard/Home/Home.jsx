@@ -100,7 +100,13 @@ export default function Home({ onAuthenticate, serverUrl }) {
             inputValue={searchYear}
             onChangeFunction={setSearchYear}
           />
-          <Button buttonText={"Search"} className={"search-button"} />
+          <Button
+            buttonText={"Search"}
+            className={"search-button"}
+            isDisabled={
+              searchLocation !== "" && searchYear !== "" ? false : true
+            }
+          />
         </Form>
       </Container>
 

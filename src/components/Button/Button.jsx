@@ -4,6 +4,7 @@ export default function Button({
   buttonText,
   buttonType,
   className,
+  isDisabled = false,
   onClickFunction = () => {},
 }) {
   return (
@@ -11,6 +12,7 @@ export default function Button({
       type={buttonType}
       className={`button ${className}`}
       onClick={onClickFunction}
+      disabled={isDisabled}
     >
       {buttonText}
     </button>
@@ -21,5 +23,6 @@ Button.propTypes = {
   buttonText: PropTypes.string,
   buttonType: PropTypes.string,
   className: PropTypes.string,
+  isDisabled: PropTypes.bool,
   onClickFunction: PropTypes.func,
 };

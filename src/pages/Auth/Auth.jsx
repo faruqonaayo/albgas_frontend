@@ -52,21 +52,18 @@ export default function Auth({ onAuthenticate, serverUrl }) {
         gender &&
         addressProvince
       ) {
-        const response = await axios.put(
-          `${serverUrl}/auth/register`,
-          {
-            firstName,
-            lastName,
-            dob,
-            gender,
-            addressProvince,
-            address,
-            occupation,
-            email,
-            password,
-            cPassword,
-          }
-        );
+        const response = await axios.put(`${serverUrl}/auth/register`, {
+          firstName,
+          lastName,
+          dob,
+          gender,
+          addressProvince,
+          address,
+          occupation,
+          email,
+          password,
+          cPassword,
+        });
 
         // reset form fields and set success message
         setSuccessMessage(response.data.message);
