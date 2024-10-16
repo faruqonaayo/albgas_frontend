@@ -98,7 +98,7 @@ export default function Profile({ onAuthenticate, serverUrl }) {
 
       <Container className={"profile-details"}>
         <img
-          src="src\assets\avatar.png"
+          src="../../../public/avatar.png"
           title="avatar"
           className="avatar-icon"
         />
