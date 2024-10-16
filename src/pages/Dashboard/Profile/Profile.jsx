@@ -30,8 +30,7 @@ export default function Profile({ onAuthenticate, serverUrl }) {
           },
         });
 
-        console.log(response.data);
-
+        // set the user profile details to what is returned from the server
         setFirstName(response.data.profile.firstName);
         setLastName(response.data.profile.lastName);
         setEmail(response.data.profile.email);
@@ -72,8 +71,11 @@ export default function Profile({ onAuthenticate, serverUrl }) {
           }
         );
 
+        // set the success message and clear the error message
         setErrorMessage("");
         setSuccessMessage(response.data.message);
+
+        // reset the password and confirm password fields
         setPassword("");
         setCPassword("");
       } else {
