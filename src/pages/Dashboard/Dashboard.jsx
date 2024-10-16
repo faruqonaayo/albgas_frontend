@@ -8,6 +8,7 @@ import Home from "./Home/Home";
 
 // importing styles
 import "./Dashboard.css";
+import Profile from "./Profile/Profile";
 
 export default function Dashboard({ onAuthenticate, serverUrl }) {
   const [dashboardPage, setDashboardPage] = useState("home");
@@ -54,7 +55,9 @@ export default function Dashboard({ onAuthenticate, serverUrl }) {
       {dashboardPage === "home" && (
         <Home onAuthenticate={onAuthenticate} serverUrl={serverUrl} />
       )}
-      {dashboardPage === "profile" && <Container>Profile</Container>}
+      {dashboardPage === "profile" && (
+        <Profile onAuthenticate={onAuthenticate} serverUrl={serverUrl} />
+      )}
       <Container className={"dashboard-footer"}>
         <label>Developed by Faruq Ayomide</label>
       </Container>

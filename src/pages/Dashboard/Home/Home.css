@@ -1,15 +1,15 @@
- .home {
-  padding: 2px 20px;
+.home {
+  padding: 5px 20px 20px 20px;
 }
 
- .home .search-container .search-form {
+.home .search-container .search-form {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 20px;
 }
 
- .home .search-container .search-form input {
+.home .search-container .search-form input {
   background-color: #f5f7f8;
   border: 1px solid #45474b;
   padding: 4px 8px;
@@ -19,11 +19,11 @@
   margin-bottom: 8px;
 }
 
- .home .search-container .search-form input:focus {
+.home .search-container .search-form input:focus {
   outline: 1px solid #f4ce14;
 }
 
- .home .search-container .search-form .search-button {
+.home .search-container .search-form .search-button {
   width: 150px;
   background-color: #495e57;
   border: 1px solid #45474b;
@@ -37,16 +37,12 @@
   transition: all 0.3s linear;
 }
 
-
-  .home
-  .search-container
-  .search-form
-  .search-button:hover {
+.home .search-container .search-form .search-button:hover {
   background-color: #f4ce14;
   color: #495e57;
 }
 
- .home .content-title {
+.home .content-title {
   font-size: 1.7rem;
   color: #45474b;
   margin-top: 10px;
@@ -55,7 +51,7 @@
   text-decoration: underline;
 }
 
- .home .production {
+.home .production {
   width: 100%;
   height: 150px;
   background-color: #ffffff;
@@ -69,7 +65,7 @@
   cursor: pointer;
 }
 
- .home .production h2 {
+.home .production h2 {
   font-size: 1.4rem;
   color: #45474b;
   margin: 0px;

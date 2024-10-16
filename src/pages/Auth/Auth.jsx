@@ -108,6 +108,8 @@ export default function Auth({ onAuthenticate, serverUrl }) {
       }
     } catch (error) {
       // set error message if there is an error
+      console.log(error);
+
       setErrorMessage(error.response.data.message);
       setSuccessMessage("");
     }
