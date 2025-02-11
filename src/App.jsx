@@ -7,8 +7,8 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 
 // url
 let url;
-// url = "http://localhost:3000";
-url = "https://albgas-backend.onrender.com";
+url = "http://localhost:3000";
+// url = "https://albgas-backend.onrender.com";
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
